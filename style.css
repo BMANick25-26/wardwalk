@@ -211,3 +211,22 @@ footer {
     display: block;
   }
 }
+
+/* Force emergency WhatsApp button styling inside nav */
+.nav .btn.emergency {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #fff;
+  font-weight: 700;
+}
+
+.nav .btn.emergency:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+/* Ensure nav link styles do NOT override the button */
+.nav .btn.emergency {
+  margin-left: 12px;
+  text-decoration: none;
+}
