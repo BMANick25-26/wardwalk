@@ -128,6 +128,20 @@ body {
   }
 }
 
+/* Emergency button inside nav */
+.nav-emergency {
+  margin-left: 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .nav-emergency {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}
+
 .callout {
   margin-top: 16px;
   padding: 16px;
