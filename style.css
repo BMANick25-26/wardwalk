@@ -169,6 +169,43 @@ h3 {
   color: var(--link-hover);
 }
 
+/* Useful images section */
+.image-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+@media (min-width: 900px) {
+  .image-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.image-card {
+  margin: 0;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 12px;
+}
+
+.image-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;   /* IMPORTANT for posters/charts */
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid var(--border, #d1d5db);
+  display: block;
+}
+
+.image-card figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted, #4b5563);
+}
+
 /* Callout (subtle, not “dark card”) */
 .callout {
   margin-top: 16px;
