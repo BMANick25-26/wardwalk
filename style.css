@@ -116,43 +116,13 @@ footer {
 
 /* Mobile header: brand on top, menu below */
 @media (max-width: 800px) {
-  .header-inner {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 12px !important;
+  .header {
+    outline: none !important;
   }
 
-  .brand {
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-  }
-
-  .brand > div {
-    min-width: 0 !important;
-  }
-
+  .header-inner,
   .nav {
-    width: 100% !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-  }
-
-  .nav a {
-    margin-left: 0 !important;
-    display: inline-flex !important;
-    padding: 7px 10px !important;
-    border: 1px solid #222 !important;
-    border-radius: 10px !important;
-    background: #111522 !important;
-    white-space: nowrap !important;
-  }
-
-  .logo-image {
-    height: 32px !important;
-    width: auto !important;
+    outline: none !important;
+    border-bottom: none !important;
   }
 }
