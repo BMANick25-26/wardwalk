@@ -30,12 +30,12 @@ body {
   align-items: center;
 }
 
-.logo {
-  background: #ea580d;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-weight: 700;
+.logo-image {
+  height: 36px;
+  width: auto;
+  display: block;
 }
+
 
 .nav a {
   margin-left: 12px;
