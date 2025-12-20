@@ -1,97 +1,192 @@
+:root{
+  --bg: #ffffff;
+  --text: #1f2937;          /* slate-800 */
+  --muted: #4b5563;         /* slate-600 */
+  --border: #d1d5db;        /* gray-300 */
+  --panel: #f9fafb;         /* gray-50 */
+  --link: #1d4ed8;          /* blue-700 */
+  --link-hover: #1e40af;    /* blue-800 */
+  --focus: #f59e0b;         /* amber-500 */
+  --accent: #ea580d;        /* your orange */
+  --danger: #dc2626;        /* red-600 */
+  --danger-hover: #b91c1c;  /* red-700 */
+}
+
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #0b0d12;
-  color: #e7e9ef;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
 }
 
 .container {
   max-width: 1100px;
   padding: 20px;
-  margin: auto;
+  margin: 0 auto;
 }
 
+/* Header */
 .header {
   position: sticky;
   top: 0;
-  background: #0b0d12;
-  border-bottom: 1px solid #222;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
 }
 
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  max-height: 48px;
+  max-height: 56px;
+  min-width: 0;
 }
 
 .logo-image {
   height: 40px;
-  max-height: 40px;
-  border-radius: 6px;
   width: auto;
   display: block;
   object-fit: contain;
+  border-radius: 6px;
 }
 
+.muted {
+  color: var(--muted);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
 .nav a {
-  margin-left: 12px;
-  color: #aab1c3;
-  text-decoration: none;
+  margin-left: 0;
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 14px;
 }
 
-.nav a.cta {
-  color: #fff;
+.nav a:hover {
+  color: var(--link-hover);
 }
 
+.nav a:focus,
+.nav a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Hero */
 .hero {
-  padding: 40px 0;
+  padding: 28px 0 18px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 28px 0 12px;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.25;
 }
 
 .lead {
-  color: #aab1c3;
+  color: var(--muted);
+  margin: 0;
+  max-width: 70ch;
 }
 
+/* Layout / Cards (more like “content panels”) */
 .grid {
   display: grid;
   gap: 16px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .card {
-  background: #111522;
-  padding: 20px;
+  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 12px;
+  padding: 18px;
 }
 
+/* Lists */
+.link-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.link-list li {
+  margin: 10px 0;
+}
+
+.link-list a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link-list a:hover {
+  color: var(--link-hover);
+}
+
+/* Callout (subtle, not “dark card”) */
+.callout {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 4px solid var(--accent);
+  background: var(--panel);
+  border-radius: 10px;
+  color: var(--text);
+}
+
+/* Buttons (keep minimal, BMA-like sites are link-first) */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #333;
+  border-radius: 10px;
+  border: 1px solid var(--border);
   text-decoration: none;
-  color: #fff;
+  color: var(--text);
+  background: #ffffff;
+  font-weight: 600;
 }
 
-.btn.primary {
-  background: #ea580d;
-  border-color: #ea580d;
-}
-
-.btn.ghost {
-  background: transparent;
+.btn:hover {
+  background: var(--panel);
 }
 
 .buttons {
@@ -100,151 +195,69 @@ body {
   flex-wrap: wrap;
 }
 
-/* Emergency WhatsApp button */
+/* Emergency WhatsApp button (kept prominent) */
 .btn.emergency {
-  background: #dc2626;          /* strong red */
-  border-color: #dc2626;
+  background: var(--danger);
+  border-color: var(--danger);
   color: #fff;
   font-weight: 700;
   position: relative;
   animation: pulse 2s infinite;
+  text-decoration: none;
 }
 
 .btn.emergency:hover {
-  background: #b91c1c;
-  border-color: #b91c1c;
+  background: var(--danger-hover);
+  border-color: var(--danger-hover);
 }
 
-/* Subtle pulse to draw attention */
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
-  }
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35); }
+  70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
 }
 
-/* Emergency button inside nav */
+/* Emergency button in nav */
 .nav-emergency {
-  margin-left: 12px;
   white-space: nowrap;
 }
 
-@media (max-width: 800px) {
-  .nav-emergency {
-    width: 100%;
-    justify-content: center;
-    margin-left: 0;
-  }
-}
-
-.callout {
-  margin-top: 16px;
-  padding: 16px;
-  border-left: 4px solid #ea580d;
-  background: #111522;
-}
-
+/* Footer */
 footer {
-  margin-top: 60px;
-  padding: 20px;
-  border-top: 1px solid #222;
-  color: #aab1c3;
+  margin-top: 50px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
 }
 
 /* Mobile header: brand on top, menu below */
 @media (max-width: 800px) {
+  .container {
+    padding: 12px;
+  }
+
   .header-inner {
-    flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    overflow-x: hidden;
-     .container {
-    padding: 12px;
-  }
   }
 
   .brand {
-    min-width: 0;
     width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .brand > div {
-    min-width: 0;
-  }
-
-  .nav {
-    overflow-x: hidden;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .nav a {
-    max-width: 100%;
-    margin-left: 0;
-    display: inline-flex;
-    padding: 7px 10px;
-    border: 1px solid #222;
-    border-radius: 10px;
-    background: #111522;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-
-  .nav a.cta {
-    border-color: #ea580d;
   }
 
   .logo-image {
     height: 32px;
-    width: auto;
-    display: block;
+  }
+
+  .nav {
+    width: 100%;
+    gap: 10px;
+  }
+
+  /* Make the emergency button obvious and full-width on mobile */
+  .nav .btn.emergency {
+    width: 100%;
   }
 }
 
-/* Force emergency WhatsApp button styling inside nav */
-.nav .btn.emergency {
-  background: #dc2626;
-  border-color: #dc2626;
-  color: #fff;
-  font-weight: 700;
-}
-
-.nav .btn.emergency:hover {
-  background: #b91c1c;
-  border-color: #b91c1c;
-}
-
-/* Ensure nav link styles do NOT override the button */
-.nav .btn.emergency {
-  margin-left: 12px;
-  text-decoration: none;
-}
-
-.link-list {
-  list-style: disc;
-  padding-left: 20px;
-}
-
-.link-list li {
-  margin-bottom: 10px;
-}
-
-.link-list a {
-  color: #e7e9ef;
-  text-decoration: underline;
-}
-
-.link-list a:hover {
-  color: #fff;
-}
