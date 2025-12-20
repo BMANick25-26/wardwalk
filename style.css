@@ -126,3 +126,6 @@ footer {
     border-bottom: none !important;
   }
 }
+@media (max-width: 800px) {
+  body { background: #1a001a !important; }
+}
