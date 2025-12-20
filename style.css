@@ -157,3 +157,8 @@ footer {
     border-color: #ea580d;
   }
 }
+
+@media (max-width: 800px) {
+  .header { outline: 3px solid lime !important; }
+}
+
