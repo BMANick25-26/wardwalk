@@ -26,14 +26,17 @@ body {
 
 .brand {
   display: flex;
-  gap: 12px;
   align-items: center;
+  gap: 12px;
+  max-height: 48px;
 }
 
 .logo-image {
-  height: 36px;
+  height: 40px;
+  max-height: 40px;
   width: auto;
   display: block;
+  object-fit: contain;
 }
 
 
