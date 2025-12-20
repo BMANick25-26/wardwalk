@@ -113,3 +113,47 @@ footer {
   border-top: 1px solid #222;
   color: #aab1c3;
 }
+
+/* Mobile header: brand on top, menu below */
+@media (max-width: 800px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .brand {
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  /* Keep logo + title aligned and stop them pushing off screen */
+  .brand > div {
+    min-width: 0;
+  }
+
+  .brand strong {
+    display: block;
+    line-height: 1.2;
+  }
+
+  .nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav a {
+    margin-left: 0; /* override desktop */
+    padding: 7px 10px;
+    border: 1px solid #222;
+    border-radius: 10px;
+    background: #111522;
+    white-space: nowrap;
+  }
+
+  .nav a.cta {
+    border-color: #ea580d;
+  }
+}
