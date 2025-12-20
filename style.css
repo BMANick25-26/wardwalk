@@ -34,6 +34,7 @@ body {
 .logo-image {
   height: 40px;
   max-height: 40px;
+  border-radius: 6px;
   width: auto;
   display: block;
   object-fit: contain;
