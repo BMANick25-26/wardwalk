@@ -116,13 +116,48 @@ footer {
 
 /* Mobile header: brand on top, menu below */
 @media (max-width: 800px) {
-  .header {
-    outline: none !important;
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
-  .header-inner,
+  .brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand > div {
+    min-width: 0;
+  }
+
   .nav {
-    outline: none !important;
-    border-bottom: none !important;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav a {
+    margin-left: 0;
+    display: inline-flex;
+    padding: 7px 10px;
+    border: 1px solid #222;
+    border-radius: 10px;
+    background: #111522;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .nav a.cta {
+    border-color: #ea580d;
+  }
+
+  .logo-image {
+    height: 32px;
+    width: auto;
+    display: block;
   }
 }
