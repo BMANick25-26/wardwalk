@@ -169,12 +169,23 @@ h3 {
   color: var(--link-hover);
 }
 
+section {
+  margin-top: 48px;
+}
+
+section + section {
+  padding-top: 32px;
+  border-top: 1px solid var(--border, #d1d5db);
+}
+
 /* Useful images section */
 .image-grid {
   display: grid;
-  gap: 16px;
-  margin-top: 12px;
+  gap: 24px;          /* increased gap between tiles */
+  margin-top: 16px;
+  margin-bottom: 32px; /* space after images section */
 }
+
 
 @media (min-width: 900px) {
   .image-grid {
