@@ -230,3 +230,21 @@ footer {
   margin-left: 12px;
   text-decoration: none;
 }
+
+.link-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.link-list li {
+  margin-bottom: 10px;
+}
+
+.link-list a {
+  color: #e7e9ef;
+  text-decoration: underline;
+}
+
+.link-list a:hover {
+  color: #fff;
+}
