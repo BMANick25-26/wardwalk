@@ -138,6 +138,7 @@ h3 {
 @media (min-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 24px;
   }
 }
 
