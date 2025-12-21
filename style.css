@@ -430,6 +430,13 @@ a.disabled {
     gap: 10px;
   }
 
+   @media (max-width: 800px) {
+  section {
+    scroll-margin-top: 150px; /* header is taller when stacked */
+  }
+}
+
+   
   /* Make the emergency button obvious and full-width on mobile */
   .nav .btn.emergency {
     width: 100%;
