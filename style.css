@@ -99,6 +99,11 @@ body {
   border-radius: 6px;
 }
 
+/* Prevent sticky header covering anchored section titles */
+section {
+  scroll-margin-top: 110px; /* adjust if needed */
+}
+
 /* Hero */
 .hero {
   padding: 28px 0 18px;
