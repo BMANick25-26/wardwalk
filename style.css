@@ -308,6 +308,23 @@ section + section {
   white-space: nowrap;
 }
 
+/* QR page */
+.qr-wrapper {
+  margin: 24px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.qr-wrapper img {
+  width: 280px;
+  height: 280px;
+  max-width: 100%;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 12px;
+}
+
 /* Footer */
 footer {
   margin-top: 50px;
