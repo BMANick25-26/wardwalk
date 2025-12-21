@@ -332,6 +332,73 @@ footer {
   border-top: 1px solid var(--border);
   color: var(--muted);
 }
+/* Help accordion */
+.accordion {
+  margin-top: 12px;
+  border-top: 1px solid var(--border, #d1d5db);
+  padding-top: 12px;
+}
+
+.accordion summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--link, #1d4ed8);
+  list-style: none;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::after {
+  content: " +";
+  font-weight: 700;
+  color: var(--muted, #4b5563);
+}
+
+.accordion[open] summary::after {
+  content: " −";
+}
+
+.accordion-body {
+  margin-top: 10px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 10px;
+}
+
+.contact-actions .btn {
+  white-space: normal;
+}
+
+/* Disabled placeholders */
+a.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Dropdown styling */
+.select {
+  width: 100%;
+  max-width: 420px;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text, #1f2937);
+}
+
+/* Highlight selected RRDC (Option C) */
+.rrdc-highlight {
+  outline: 3px solid var(--focus, #f59e0b);
+  outline-offset: 6px;
+  border-radius: 12px;
+}
 
 /* Mobile header: brand on top, menu below */
 @media (max-width: 800px) {
