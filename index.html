@@ -151,7 +151,9 @@
 
       const src = btn.getAttribute('data-src');
       if (src && frame.getAttribute('src') !== src) {
-        frame.setAttribute('src', src);
+        const bust = 'v=18'; // increment this when you deploy
+const nextSrc = src.includes('?') ? `${src}&${bust}` : `${src}?${bust}`;
+frame.setAttribute('src', nextSrc);
       }
 
       panel.setAttribute('aria-labelledby', btn.id);
