@@ -16,7 +16,7 @@
   --danger: #dc2626;
   --danger-hover: #b91c1c;
 
-  /* Tabs / dark surfaces (used only in tabs area) */
+  /* Tabs surfaces */
   --tabs-bg: #0b0d12;
   --tabs-surface: #111522;
   --tabs-border: #2a2f3a;
@@ -40,7 +40,6 @@ body {
 
 h1, h2, h3 { color: var(--bma-blue); }
 strong { color: var(--bma-blue); }
-
 .muted { color: var(--muted); }
 
 /* Header */
@@ -101,10 +100,10 @@ strong { color: var(--bma-blue); }
 
 .nav-emergency { white-space: nowrap; }
 
-/* Sections (spacing + anchor offset) */
+/* Sections */
 section {
   margin-top: 48px;
-  scroll-margin-top: 110px; /* sticky header offset */
+  scroll-margin-top: 110px;
 }
 
 section + section {
@@ -230,11 +229,11 @@ h3 {
   flex-wrap: wrap;
 }
 
-/* ===== Buttons: single unified style ===== */
-
+/* ===== Unified buttons (links + tab buttons) ===== */
 .btn,
 .btn.secondary,
-.btn.emergency {
+.btn.emergency,
+.tab-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -256,18 +255,28 @@ h3 {
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
+/* Hover */
 .btn:hover,
-.btn.secondary:hover {
+.btn.secondary:hover,
+.tab-btn:hover {
   background: var(--panel);
   border-color: var(--link);
   color: var(--link-hover);
 }
 
-/* Emergency = SAME button, different colour only */
+/* Active tab (selected but same style) */
+.tab-btn.active {
+  background: var(--panel);
+  border-color: var(--link);
+  color: var(--link);
+}
+
+/* Emergency: same shape, colour only */
 .btn.emergency {
   background: var(--danger);
   border-color: var(--danger);
   color: #ffffff;
+  animation: none;
 }
 
 .btn.emergency:hover {
@@ -275,16 +284,13 @@ h3 {
   border-color: var(--danger-hover);
 }
 
-/* Remove pulse unless you explicitly want it */
-.btn.emergency {
-  animation: none;
-}
-
+/* Consistent tap targets */
 .nav .btn,
-.footer .btn,
+footer .btn,
 .callout-actions .btn,
-.contact-actions .btn {
-  min-height: 44px; /* consistent tap target */
+.contact-actions .btn,
+.tabs .tab-btn {
+  min-height: 44px;
 }
 
 /* Help accordion */
@@ -387,11 +393,9 @@ footer {
 
   .nav { width: 100%; gap: 10px; }
 
-  section { scroll-margin-top: 150px; } /* stacked header is taller */
+  section { scroll-margin-top: 150px; }
 
-  .nav .btn.emergency {
-    width: 100%;
-  }
+  .nav .btn.emergency { width: 100%; }
 }
 
 @media (max-width: 600px) {
@@ -401,11 +405,11 @@ footer {
   }
 }
 
-/* Tabs */
+/* Tabs layout (kept, but no longer forces a different button look) */
 .tabs-wrap {
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 1px solid var(--tabs-border);
+  border-top: 1px solid var(--border);
 }
 
 .tabs {
@@ -415,32 +419,12 @@ footer {
   align-items: center;
 }
 
-.tab-btn {
-  appearance: none;
-  border: 1.5px solid var(--tabs-border);
-  background: var(--tabs-surface);
-  color: var(--link);
-  font-weight: 700;
-  padding: 10px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.tab-btn:hover { border-color: #3a4252; }
-
-.tab-btn.active {
-  background: #0f172a;
-  border-color: var(--link);
-  color: var(--link);
-}
-
 .tab-panel {
   margin-top: 14px;
-  background: var(--tabs-surface);
-  border: 1.5px solid var(--tabs-border);
+  border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
+  background: #ffffff;
 }
 
 .tab-frame {
@@ -448,14 +432,9 @@ footer {
   height: 75vh;
   border: 0;
   display: block;
-  background: var(--tabs-bg);
+  background: #ffffff;
 }
 
 @media (max-width: 800px) {
-  .tab-btn {
-    padding: 12px 12px;
-    border-radius: 12px;
-  }
-
   .tab-frame { height: 78vh; }
 }
