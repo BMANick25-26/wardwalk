@@ -70,20 +70,64 @@
     </section>
 
     <!-- Tabs section -->
-    <section class="tabs-wrap" aria-label="Ward walk pages">
-      <div class="tabs" role="tablist" aria-label="Ward walk tabs">
-        <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="tabPanel" id="tab-what" data-src="pages/what.html" data-tab="what">What is a ward walk</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-faqs" data-src="pages/faqs.html" data-tab="faqs">FAQs</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-prep" data-src="pages/prep.html" data-tab="prep">How to prep</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-during" data-src="pages/during.html" data-tab="during">What to do during</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-after" data-src="pages/after.html" data-tab="after">What to do after</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-pizza" data-src="pages/pizza.html" data-tab="pizza">Pizza and Pay</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-visuals" data-src="pages/visuals.html" data-tab="visuals">Visuals</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-links" data-src="pages/links.html" data-tab="links">Useful links</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-help" data-src="pages/help.html" data-tab="help">Help</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-employment" data-src="employment-advice.html" data-tab="employment">Employment advice</button>
-        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel" id="tab-record" data-src="pages/record.html" data-tab="record">Record your ward walk</button>
-      </div>
+   <section class="tabs-wrap" aria-label="Ward walk pages">
+
+  <!-- Top-level tabs -->
+  <div class="tabs" role="tablist" aria-label="Ward walk tabs">
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+      id="tab-faqs" data-src="pages/faqs.html" data-tab="faqs">FAQs</button>
+
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+      id="tab-visuals" data-src="pages/visuals.html" data-tab="visuals">Visuals</button>
+
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+      id="tab-links" data-src="pages/links.html" data-tab="links">Useful links</button>
+
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+      id="tab-help" data-src="pages/help.html" data-tab="help">Help</button>
+
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+      id="tab-employment" data-src="employment-advice.html" data-tab="employment">Employment advice</button>
+
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+      id="tab-record" data-src="pages/record.html" data-tab="record">Record your ward walk</button>
+  </div>
+
+  <!-- How-to section -->
+  <div class="tab-group-section">
+    <h3 class="tab-group-heading">How to do a ward walk</h3>
+
+    <div class="tabs" role="tablist" aria-label="How to do a ward walk tabs">
+      <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="tabPanel"
+        id="tab-what" data-src="pages/what.html" data-tab="what">What is a ward walk</button>
+
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+        id="tab-prep" data-src="pages/prep.html" data-tab="prep">How to prep</button>
+
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+        id="tab-during" data-src="pages/during.html" data-tab="during">What to do during</button>
+
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+        id="tab-after" data-src="pages/after.html" data-tab="after">What to do after</button>
+
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
+        id="tab-pizza" data-src="pages/pizza.html" data-tab="pizza">Pizza and Pay</button>
+    </div>
+  </div>
+
+  <!-- Panel -->
+  <div class="tab-panel" id="tabPanel">
+    <iframe
+      id="tabFrame"
+      class="tab-frame"
+      title="Ward walk content"
+      src="pages/what.html"
+      loading="eager"
+    ></iframe>
+  </div>
+
+</section>
+
 
       <div class="tab-panel" id="tabPanel" role="tabpanel" aria-labelledby="tab-what">
         <iframe
