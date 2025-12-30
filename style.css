@@ -280,6 +280,13 @@ h3 {
   animation: none;
 }
 
+.nav .btn,
+.footer .btn,
+.callout-actions .btn,
+.contact-actions .btn {
+  min-height: 44px; /* consistent tap target */
+}
+
 /* Help accordion */
 .accordion {
   margin-top: 12px;
