@@ -1,23 +1,25 @@
-:root{
-   --bma-blue: #1d4ed8;   /* BMA-style blue */
-  --bg: #ffffff;
-  --text: #1f2937;          /* slate-800 */
-  --muted: #4b5563;         /* slate-600 */
-  --border: #d1d5db;        /* gray-300 */
-  --panel: #f9fafb;         /* gray-50 */
-  --link: #1d4ed8;          /* blue-700 */
-  --link-hover: #1e40af;    /* blue-800 */
-  --focus: #f59e0b;         /* amber-500 */
-  --accent: #ea580d;        /* your orange */
-  --danger: #dc2626;        /* red-600 */
-  --danger-hover: #b91c1c;  /* red-700 */
-  h1, h2, h3 {
-  color: var(--bma-blue);
-}
+:root {
+  --bma-blue: #1d4ed8;
 
-strong {
-  color: var(--bma-blue);
-}
+  --bg: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --border: #d1d5db;
+  --panel: #f9fafb;
+
+  --link: #1d4ed8;
+  --link-hover: #1e40af;
+
+  --focus: #f59e0b;
+  --accent: #ea580d;
+
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+
+  /* Tabs / dark surfaces (used only in tabs area) */
+  --tabs-bg: #0b0d12;
+  --tabs-surface: #111522;
+  --tabs-border: #2a2f3a;
 }
 
 * { box-sizing: border-box; }
@@ -35,6 +37,11 @@ body {
   padding: 20px;
   margin: 0 auto;
 }
+
+h1, h2, h3 { color: var(--bma-blue); }
+strong { color: var(--bma-blue); }
+
+.muted { color: var(--muted); }
 
 /* Header */
 .header {
@@ -68,10 +75,6 @@ body {
   border-radius: 6px;
 }
 
-.muted {
-  color: var(--muted);
-}
-
 /* Nav */
 .nav {
   display: flex;
@@ -81,16 +84,13 @@ body {
 }
 
 .nav a {
-  margin-left: 0;
   color: var(--link);
   text-decoration: underline;
   text-underline-offset: 2px;
   font-size: 14px;
 }
 
-.nav a:hover {
-  color: var(--link-hover);
-}
+.nav a:hover { color: var(--link-hover); }
 
 .nav a:focus,
 .nav a:focus-visible {
@@ -99,15 +99,21 @@ body {
   border-radius: 6px;
 }
 
-/* Prevent sticky header covering anchored section titles */
+.nav-emergency { white-space: nowrap; }
+
+/* Sections (spacing + anchor offset) */
 section {
-  scroll-margin-top: 110px; /* adjust if needed */
+  margin-top: 48px;
+  scroll-margin-top: 110px; /* sticky header offset */
+}
+
+section + section {
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
 }
 
 /* Hero */
-.hero {
-  padding: 28px 0 18px;
-}
+.hero { padding: 28px 0 18px; }
 
 h1 {
   margin: 0 0 10px;
@@ -134,8 +140,7 @@ h3 {
   max-width: 70ch;
 }
 
-
-/* Layout / Cards (more like “content panels”) */
+/* Layout / Cards */
 .grid {
   display: grid;
   gap: 16px;
@@ -162,9 +167,7 @@ h3 {
   margin: 0;
 }
 
-.link-list li {
-  margin: 10px 0;
-}
+.link-list li { margin: 10px 0; }
 
 .link-list a {
   color: var(--link);
@@ -172,59 +175,45 @@ h3 {
   text-underline-offset: 2px;
 }
 
-.link-list a:hover {
-  color: var(--link-hover);
-}
-
-section {
-  margin-top: 48px;
-}
-
-section + section {
-  padding-top: 32px;
-  border-top: 1px solid var(--border, #d1d5db);
-}
+.link-list a:hover { color: var(--link-hover); }
 
 /* Useful images section */
 .image-grid {
   display: grid;
-  gap: 24px;          /* increased gap between tiles */
+  gap: 24px;
   margin-top: 16px;
-  margin-bottom: 32px; /* space after images section */
+  margin-bottom: 32px;
 }
 
-
 @media (min-width: 900px) {
-  .image-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .image-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .image-card {
   margin: 0;
   padding: 14px;
   background: #ffffff;
-  border: 1px solid var(--border, #d1d5db);
+  border: 1px solid var(--border);
   border-radius: 12px;
 }
 
 .image-card img {
   width: 100%;
   height: 220px;
-  object-fit: contain;   /* IMPORTANT for posters/charts */
+  object-fit: contain;
   background: #ffffff;
   border-radius: 8px;
-  border: 1px solid var(--border, #d1d5db);
+  border: 1px solid var(--border);
   display: block;
 }
 
 .image-card figcaption {
   margin-top: 10px;
   font-size: 14px;
-  color: var(--muted, #4b5563);
+  color: var(--muted);
 }
 
-/* Callout (subtle, not “dark card”) */
+/* Callout */
 .callout {
   margin-top: 16px;
   padding: 14px 16px;
@@ -234,7 +223,20 @@ section + section {
   color: var(--text);
 }
 
-/* Buttons (keep minimal, BMA-like sites are link-first) */
+.callout-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -248,17 +250,21 @@ section + section {
   font-weight: 600;
 }
 
-.btn:hover {
+.btn:hover { background: var(--panel); }
+
+.btn.secondary {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  color: var(--link);
+  font-weight: 600;
+}
+
+.btn.secondary:hover {
   background: var(--panel);
+  color: var(--link-hover);
 }
 
-.buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* Emergency WhatsApp button (kept prominent) */
+/* Emergency WhatsApp button */
 .btn.emergency {
   background: var(--danger);
   border-color: var(--danger);
@@ -273,101 +279,38 @@ section + section {
   background: var(--danger-hover);
   border-color: var(--danger-hover);
 }
-/* Secondary buttons (used in callouts) */
-.btn.secondary {
-  background: #ffffff;
-  border: 1px solid var(--border, #d1d5db);
-  color: var(--link, #1d4ed8);
-  font-weight: 600;
-}
-
-.btn.secondary:hover {
-  background: var(--panel, #f9fafb);
-  color: var(--link-hover, #1e40af);
-}
-
-/* Callout button layout */
-.callout-actions {
-  margin-top: 16px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 600px) {
-  .callout-actions .btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35); }
-  70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35); }
+  70%  { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
   100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
 }
 
-
-/* Emergency button in nav */
-.nav-emergency {
-  white-space: nowrap;
-}
-
-/* QR page */
-.qr-wrapper {
-  margin: 24px 0;
-  display: flex;
-  justify-content: center;
-}
-
-.qr-wrapper img {
-  width: 280px;
-  height: 280px;
-  max-width: 100%;
-  border: 1px solid var(--border, #d1d5db);
-  border-radius: 12px;
-  background: #ffffff;
-  padding: 12px;
-}
-
-/* Footer */
-footer {
-  margin-top: 50px;
-  padding: 18px 0;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-}
 /* Help accordion */
 .accordion {
   margin-top: 12px;
-  border-top: 1px solid var(--border, #d1d5db);
+  border-top: 1px solid var(--border);
   padding-top: 12px;
 }
 
 .accordion summary {
   cursor: pointer;
   font-weight: 700;
-  color: var(--link, #1d4ed8);
+  color: var(--link);
   list-style: none;
 }
 
-.accordion summary::-webkit-details-marker {
-  display: none;
-}
+.accordion summary::-webkit-details-marker { display: none; }
 
 .accordion summary::after {
   content: " +";
   font-weight: 700;
-  color: var(--muted, #4b5563);
+  color: var(--muted);
 }
 
-.accordion[open] summary::after {
-  content: " −";
-}
+.accordion[open] summary::after { content: " −"; }
 
-.accordion-body {
-  margin-top: 10px;
-}
+.accordion-body { margin-top: 10px; }
 
 .contact-actions {
   display: flex;
@@ -376,9 +319,7 @@ footer {
   margin: 12px 0 10px;
 }
 
-.contact-actions .btn {
-  white-space: normal;
-}
+.contact-actions .btn { white-space: normal; }
 
 /* Disabled placeholders */
 a.disabled {
@@ -392,24 +333,47 @@ a.disabled {
   max-width: 420px;
   margin-top: 6px;
   padding: 10px 12px;
-  border: 1px solid var(--border, #d1d5db);
+  border: 1px solid var(--border);
   border-radius: 10px;
   background: #fff;
-  color: var(--text, #1f2937);
+  color: var(--text);
 }
 
-/* Highlight selected RRDC (Option C) */
+/* Highlight selected RRDC */
 .rrdc-highlight {
-  outline: 3px solid var(--focus, #f59e0b);
+  outline: 3px solid var(--focus);
   outline-offset: 6px;
   border-radius: 12px;
 }
 
-/* Mobile header: brand on top, menu below */
+/* QR page */
+.qr-wrapper {
+  margin: 24px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.qr-wrapper img {
+  width: 280px;
+  height: 280px;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 12px;
+}
+
+/* Footer */
+footer {
+  margin-top: 50px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* Mobile header */
 @media (max-width: 800px) {
-  .container {
-    padding: 12px;
-  }
+  .container { padding: 12px; }
 
   .header-inner {
     flex-direction: column;
@@ -417,29 +381,22 @@ a.disabled {
     gap: 12px;
   }
 
-  .brand {
+  .brand { width: 100%; }
+  .logo-image { height: 32px; }
+
+  .nav { width: 100%; gap: 10px; }
+
+  section { scroll-margin-top: 150px; } /* stacked header is taller */
+
+  .nav .btn.emergency {
     width: 100%;
-  }
-
-  .logo-image {
-    height: 32px;
-  }
-
-  .nav {
-    width: 100%;
-    gap: 10px;
-  }
-
-   @media (max-width: 800px) {
-  section {
-    scroll-margin-top: 150px; /* header is taller when stacked */
   }
 }
 
-   
-  /* Make the emergency button obvious and full-width on mobile */
-  .nav .btn.emergency {
+@media (max-width: 600px) {
+  .callout-actions .btn {
     width: 100%;
+    justify-content: center;
   }
 }
 
@@ -447,7 +404,7 @@ a.disabled {
 .tabs-wrap {
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 1px solid #222; /* this is the “line” under the buttons */
+  border-top: 1px solid var(--tabs-border);
 }
 
 .tabs {
@@ -459,9 +416,9 @@ a.disabled {
 
 .tab-btn {
   appearance: none;
-  border: 1.5px solid #2a2f3a;          /* darker, slightly thicker edge */
-  background: #111522;
-  color: #1e40af;                        /* BMA-ish blue text */
+  border: 1.5px solid var(--tabs-border);
+  background: var(--tabs-surface);
+  color: var(--link);
   font-weight: 700;
   padding: 10px 12px;
   border-radius: 12px;
@@ -469,41 +426,35 @@ a.disabled {
   line-height: 1;
 }
 
-.tab-btn:hover {
-  border-color: #3a4252;
-}
+.tab-btn:hover { border-color: #3a4252; }
 
 .tab-btn.active {
   background: #0f172a;
-  border-color: #1e40af;
-  color: #1e40af;
+  border-color: var(--link);
+  color: var(--link);
 }
 
 .tab-panel {
   margin-top: 14px;
-  background: #111522;
-  border: 1.5px solid #2a2f3a;
+  background: var(--tabs-surface);
+  border: 1.5px solid var(--tabs-border);
   border-radius: 14px;
   overflow: hidden;
 }
 
-/* The iframe that loads each “page” */
 .tab-frame {
   width: 100%;
-  height: 75vh;           /* adjust if you want taller/shorter */
+  height: 75vh;
   border: 0;
   display: block;
-  background: #0b0d12;
+  background: var(--tabs-bg);
 }
 
-/* Mobile: bigger tap targets */
 @media (max-width: 800px) {
   .tab-btn {
     padding: 12px 12px;
     border-radius: 12px;
   }
-  .tab-frame {
-    height: 78vh;
-  }
-}
 
+  .tab-frame { height: 78vh; }
+}
