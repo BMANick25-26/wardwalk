@@ -260,3 +260,49 @@ footer {
   font-size: 14px;
   color: var(--muted);
 }
+/* Tabs */
+.tabs-wrap {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  max-width: 100%;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.tab-panel {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+.tab-frame {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+  height: 75vh;
+  min-height: 700px;
+}
+@media (max-width: 800px) {
+  section { scroll-margin-top: 150px; }
+
+  .tab-frame {
+    height: 78vh;
+    min-height: 520px;
+  }
+}
+
