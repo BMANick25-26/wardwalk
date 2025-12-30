@@ -450,3 +450,24 @@ footer {
 @media (max-width: 800px) {
   .tab-frame { height: 78vh; }
 }
+
+/* === Tabs: force full-width panel/iframe === */
+.tabs-wrap,
+.tabs-wrap .tabs,
+.tabs-wrap .tab-panel {
+  width: 100%;
+  max-width: 100%;
+}
+
+.tabs-wrap .tab-panel {
+  display: block;
+  margin-top: 14px;
+}
+
+.tabs-wrap .tab-frame {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 75vh;
+  border: 0;
+}
