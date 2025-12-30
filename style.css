@@ -425,7 +425,9 @@ footer {
   border-radius: 14px;
   overflow: hidden;
   background: #ffffff;
+  width: 100%;
 }
+
 
 .tab-frame {
   width: 100%;
