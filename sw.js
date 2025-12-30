@@ -1,4 +1,4 @@
-const CACHE_NAME = "wardwalk-v2";
+const CACHE_NAME = "wardwalk-v14";
 
 const ASSETS = [
   "./",
