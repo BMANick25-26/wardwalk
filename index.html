@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css?v=19">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0b0d12">
+  <base href="./">
   <link rel="apple-touch-icon" href="images/icon-192.png">
 </head>
 
@@ -125,53 +126,82 @@
 
     <!-- Tabs logic -->
     <script>
-      (function () {
-        const tabsWrap = document.querySelector('.tabs-wrap');
-        if (!tabsWrap) return;
+  (function () {
+    const tabsWrap = document.querySelector('.tabs-wrap');
+    if (!tabsWrap) return;
 
-        const buttons = Array.from(tabsWrap.querySelectorAll('.tab-btn'));
-        const frame = document.getElementById('tabFrame');
-        const panel = document.getElementById('tabPanel');
+    const buttons = Array.from(tabsWrap.querySelectorAll('.tab-btn'));
+    const frame = document.getElementById('tabFrame');
+    const panel = document.getElementById('tabPanel');
+    if (!buttons.length || !frame || !panel) return;
 
-        if (!buttons.length || !frame || !panel) return;
+    const VERSION = '19'; // keep in sync with style.css?v=19
 
-        const bust = 'v=19'; // match your CSS version
+    function withBust(url) {
+      try {
+        const u = new URL(url, window.location.href);
+        u.searchParams.set('v', VERSION);
+        return u.pathname + u.search + u.hash;
+      } catch (e) {
+        // Fallback for odd strings
+        return url.includes('?') ? `${url}&v=${VERSION}` : `${url}?v=${VERSION}`;
+      }
+    }
 
-        function withBust(src) {
-          if (!src) return '';
-          return src.includes('?') ? `${src}&${bust}` : `${src}?${bust}`;
+    function setActive(btn, setFocus) {
+      buttons.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        b.tabIndex = isActive ? 0 : -1;
+      });
+
+      const raw = btn.getAttribute('data-src');
+      if (raw) {
+        const next = withBust(raw);
+        // Only update if different to avoid useless reloads
+        if (frame.getAttribute('src') !== next) {
+          frame.setAttribute('src', next);
         }
+      }
 
-        function setActive(btn, setFocus) {
-          buttons.forEach(b => {
-            const isActive = b === btn;
-            b.classList.toggle('active', isActive);
-            b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            b.tabIndex = isActive ? 0 : -1;
-          });
+      panel.setAttribute('aria-labelledby', btn.id);
+      if (setFocus) btn.focus({ preventScroll: true });
+    }
 
-          const raw = btn.getAttribute('data-src');
-          const nextSrc = withBust(raw);
-          if (nextSrc) frame.setAttribute('src', nextSrc);
+    // Initial
+    const initial = buttons.find(b => b.classList.contains('active')) || buttons[0];
+    buttons.forEach(b => (b.tabIndex = -1));
+    initial.tabIndex = 0;
+    setActive(initial, false);
 
-          panel.setAttribute('aria-labelledby', btn.id);
-          if (setFocus) btn.focus({ preventScroll: true });
-        }
+    // Click + keyboard nav
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => setActive(btn, true));
 
-        const initial = buttons.find(b => b.classList.contains('active')) || buttons[0];
-        buttons.forEach(b => (b.tabIndex = -1));
-        initial.tabIndex = 0;
-        setActive(initial, false);
+      btn.addEventListener('keydown', (e) => {
+        const i = buttons.indexOf(btn);
+        if (i === -1) return;
 
-        buttons.forEach(btn => {
-          btn.addEventListener('click', () => setActive(btn, true));
-        });
-      })();
-    </script>
+        let nextIndex = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextIndex = (i + 1) % buttons.length;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nextIndex = (i - 1 + buttons.length) % buttons.length;
+        if (e.key === 'Home') nextIndex = 0;
+        if (e.key === 'End') nextIndex = buttons.length - 1;
+        if (nextIndex === null) return;
 
-    <!-- EVERYTHING BELOW HERE IS YOUR ORIGINAL SINGLE-PAGE CONTENT -->
-    <!-- I REMOVED ONE BROKEN STRAY </section> THAT WAS IN YOUR FILE -->
-    <!-- (no other content changes below) -->
+        e.preventDefault();
+        setActive(buttons[nextIndex], true);
+      });
+    });
+
+    // Region select (if present inside iframe pages, this won't run here — this is just defensive)
+    // If you want region filtering, it must live in the iframe page (pages/help.html) or script.js.
+  })();
+</script>
+
+
+
 
     <section id="what is a ward walk?">
       <h2>What is a ward walk?</h2>
