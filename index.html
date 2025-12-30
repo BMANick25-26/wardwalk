@@ -35,50 +35,48 @@
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h1>How to do a ward walk</h1>
-      <p class="lead">
-        A practical guide you can use on shift.
-        Prep, delivery, follow-up, and Pizza &amp; Pay.
-      </p>
+<section class="hero">
+  <h1>How to do a ward walk</h1>
+  <p class="lead">
+    A practical guide you can use on shift.
+    Prep, delivery, follow-up, and Pizza &amp; Pay.
+  </p>
 
-      <div class="callout">
-        Keep it simple. You are there to listen, spot themes, and connect people to support.<br>
-        Remember: you do not need to be able to answer every question, if unsure please direct to first port of contact link, use useful the links at the bottom, or ask regional reps for further advice
-      </div>
+  <div class="callout">
+    Keep it simple. You are there to listen, spot themes, and connect people to support.<br>
+    Remember: you do not need to be able to answer every question, if unsure please direct to first port of contact link, use useful the links at the bottom, or ask regional reps for further advice
+  </div>
 
-      <!--buttons below callout-->
-      <div class="callout-actions">
-        <a href="#help" class="btn secondary">
-          WhatsApp regional reps for help
-        </a>
+  <!--buttons below callout-->
+  <div class="callout-actions">
+    <a href="#help" class="btn secondary">
+      WhatsApp regional reps for help
+    </a>
 
-        <a href="employment-advice.html"
-           class="btn secondary"
-           target="_blank"
-           rel="noopener">
-          BMA employment advice form
-        </a>
+    <a href="employment-advice.html"
+       class="btn secondary"
+       target="_blank"
+       rel="noopener">
+      BMA employment advice form
+    </a>
 
-        <a href="request-ballot.html"
-           class="btn secondary"
-           target="_blank"
-           rel="noopener">
-          Request a new ballot
-        </a>
-      </div>
-      
-     <a href="https://forms.office.com/e/f6R13drPGm"
-           class="btn secondary"
-           target="_blank"
-           rel="noopener">
-          Record your ward walk
-        </a>
-      </div>
-      
-    </section>
+    <a href="request-ballot.html"
+       class="btn secondary"
+       target="_blank"
+       rel="noopener">
+      Request a new ballot
+    </a>
 
-    <!-- Tabs section -->
+    <a href="https://forms.office.com/e/f6R13drPGm"
+       class="btn secondary"
+       target="_blank"
+       rel="noopener">
+      Record your ward walk
+    </a>
+  </div>
+</section>
+
+<!-- Tabs section -->
 <section class="tabs-wrap" aria-label="Ward walk pages">
 
   <!-- Top-level tabs -->
@@ -97,6 +95,7 @@
 
     <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tabPanel"
       id="tab-employment" data-src="employment-advice.html" data-tab="employment">Employment advice</button>
+  </div>
 
   <!-- How-to section (below) -->
   <div class="tab-group-section">
@@ -119,7 +118,7 @@
         id="tab-pizza" data-src="pages/pizza.html" data-tab="pizza">Pizza and Pay</button>
     </div>
   </div>
-<br>
+
   <!-- Single panel (only one) -->
   <div class="tab-panel" id="tabPanel">
     <iframe
@@ -133,64 +132,64 @@
 
 </section>
 
-      <!-- Tabs logic: fixes “tabs thing” without changing page content -->
-      <script>
-        (function () {
-          const tabsWrap = document.querySelector('.tabs-wrap');
-          if (!tabsWrap) return;
+<!-- Tabs logic: fixes “tabs thing” without changing page content -->
+<script>
+  (function () {
+    const tabsWrap = document.querySelector('.tabs-wrap');
+    if (!tabsWrap) return;
 
-          const buttons = Array.from(tabsWrap.querySelectorAll('.tab-btn'));
-          const frame = document.getElementById('tabFrame');
-          const panel = document.getElementById('tabPanel');
+    const buttons = Array.from(tabsWrap.querySelectorAll('.tab-btn'));
+    const frame = document.getElementById('tabFrame');
+    const panel = document.getElementById('tabPanel');
 
-          if (!buttons.length || !frame || !panel) return;
+    if (!buttons.length || !frame || !panel) return;
 
-          function setActive(btn, setFocus) {
-            buttons.forEach(b => {
-              const isActive = b === btn;
-              b.classList.toggle('active', isActive);
-              b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-              b.tabIndex = isActive ? 0 : -1;
-            });
+    function setActive(btn, setFocus) {
+      buttons.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        b.tabIndex = isActive ? 0 : -1;
+      });
 
-            const src = btn.getAttribute('data-src');
-            if (src && frame.getAttribute('src') !== src) {
-              frame.setAttribute('src', src);
-            }
+      const src = btn.getAttribute('data-src');
+      if (src && frame.getAttribute('src') !== src) {
+        frame.setAttribute('src', src);
+      }
 
-            panel.setAttribute('aria-labelledby', btn.id);
+      panel.setAttribute('aria-labelledby', btn.id);
 
-            if (setFocus) btn.focus({ preventScroll: true });
-          }
+      if (setFocus) btn.focus({ preventScroll: true });
+    }
 
-          // Ensure only one tabbable control initially
-          const initial = buttons.find(b => b.classList.contains('active')) || buttons[0];
-          buttons.forEach(b => (b.tabIndex = -1));
-          initial.tabIndex = 0;
-          setActive(initial, false);
+    const initial = buttons.find(b => b.classList.contains('active')) || buttons[0];
+    buttons.forEach(b => (b.tabIndex = -1));
+    initial.tabIndex = 0;
+    setActive(initial, false);
 
-          buttons.forEach(btn => {
-            btn.addEventListener('click', () => setActive(btn, true));
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => setActive(btn, true));
 
-            btn.addEventListener('keydown', (e) => {
-              const i = buttons.indexOf(btn);
-              if (i === -1) return;
+      btn.addEventListener('keydown', (e) => {
+        const i = buttons.indexOf(btn);
+        if (i === -1) return;
 
-              let nextIndex = null;
+        let nextIndex = null;
 
-              if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextIndex = (i + 1) % buttons.length;
-              if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nextIndex = (i - 1 + buttons.length) % buttons.length;
-              if (e.key === 'Home') nextIndex = 0;
-              if (e.key === 'End') nextIndex = buttons.length - 1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextIndex = (i + 1) % buttons.length;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nextIndex = (i - 1 + buttons.length) % buttons.length;
+        if (e.key === 'Home') nextIndex = 0;
+        if (e.key === 'End') nextIndex = buttons.length - 1;
 
-              if (nextIndex === null) return;
+        if (nextIndex === null) return;
 
-              e.preventDefault();
-              setActive(buttons[nextIndex], true);
-            });
-          });
-        })();
-      </script>
+        e.preventDefault();
+        setActive(buttons[nextIndex], true);
+      });
+    });
+  })();
+</script>
+
     </section>
 
     <section id="what is a ward walk?">
