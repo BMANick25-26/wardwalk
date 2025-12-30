@@ -39,6 +39,13 @@ h1, h2, h3 { color: var(--bma-blue); }
 strong { color: var(--bma-blue); }
 .muted { color: var(--muted); }
 
+h1, h2, h3 {
+  font-family: inherit;
+  color: var(--text-color, #0b0d12);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 /* Header */
 .header {
   position: sticky;
