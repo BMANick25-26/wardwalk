@@ -147,7 +147,7 @@
 
     if (!buttons.length || !frame || !panel) return;
 
-    const bust = 'v=18'; // increment when you deploy
+    const bust = 'v=18';
 
     function setActive(btn, setFocus) {
       buttons.forEach(b => {
@@ -160,17 +160,10 @@
       const src = btn.getAttribute('data-src');
       if (src) {
         const nextSrc = src.includes('?') ? `${src}&${bust}` : `${src}?${bust}`;
-
-        const currentBase = (frame.getAttribute('src') || '').split('?')[0];
-        const nextBase = nextSrc.split('?')[0];
-
-        if (currentBase !== nextBase) {
-          frame.setAttribute('src', nextSrc);
-        }
+        frame.setAttribute('src', nextSrc);
       }
 
       panel.setAttribute('aria-labelledby', btn.id);
-
       if (setFocus) btn.focus({ preventScroll: true });
     }
 
@@ -181,26 +174,10 @@
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => setActive(btn, true));
-
-      btn.addEventListener('keydown', (e) => {
-        const i = buttons.indexOf(btn);
-        if (i === -1) return;
-
-        let nextIndex = null;
-
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextIndex = (i + 1) % buttons.length;
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nextIndex = (i - 1 + buttons.length) % buttons.length;
-        if (e.key === 'Home') nextIndex = 0;
-        if (e.key === 'End') nextIndex = buttons.length - 1;
-
-        if (nextIndex === null) return;
-
-        e.preventDefault();
-        setActive(buttons[nextIndex], true);
-      });
     });
   })();
 </script>
+
 
 
     </section>
