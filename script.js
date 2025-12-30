@@ -37,3 +37,34 @@ document.getElementById("copyChecklist")?.addEventListener("click", () => {
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 })();
+(function () {
+  const frame = document.getElementById("tabFrame");
+  const tabs = Array.from(document.querySelectorAll(".tab-btn[data-src][data-tab]"));
+
+  if (!frame || tabs.length === 0) return;
+
+  function setActive(tab) {
+    tabs.forEach(t => {
+      const active = t === tab;
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active ? "true" : "false");
+    });
+
+    const src = tab.getAttribute("data-src");
+    if (src) frame.src = src;
+
+    // Update hash so you can deep link and the back button behaves sensibly
+    const id = tab.getAttribute("data-tab");
+    if (id) history.replaceState(null, "", `#${id}`);
+
+    // Scroll back to tabs on mobile after switching
+    tab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+  }
+
+  tabs.forEach(tab => tab.addEventListener("click", () => setActive(tab)));
+
+  // Load initial tab from URL hash
+  const hash = (location.hash || "").replace("#", "");
+  const initial = tabs.find(t => t.getAttribute("data-tab") === hash);
+  if (initial) setActive(initial);
+})();
