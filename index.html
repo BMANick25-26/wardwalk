@@ -10,13 +10,7 @@
 <meta name="theme-color" content="#0b0d12">
 <link rel="apple-touch-icon" href="images/icon-192.png">
 </head>
-<script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js");
-    });
-  }
-</script>
+
 <body>
 <header class="header">
   <div class="container header-inner">
@@ -1243,5 +1237,13 @@
 
 
 <script src="script.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js");
+    });
+  }
+</script>
+
 </body>
 </html>
