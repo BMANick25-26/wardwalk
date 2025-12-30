@@ -15,14 +15,11 @@
 
   --danger: #dc2626;
   --danger-hover: #b91c1c;
-
-  /* Tabs surfaces */
-  --tabs-bg: #0b0d12;
-  --tabs-surface: #111522;
-  --tabs-border: #2a2f3a;
 }
 
 * { box-sizing: border-box; }
+
+html, body { height: 100%; }
 
 body {
   margin: 0;
@@ -62,7 +59,6 @@ strong { color: var(--bma-blue); }
   display: flex;
   align-items: center;
   gap: 12px;
-  max-height: 56px;
   min-width: 0;
 }
 
@@ -159,7 +155,24 @@ h3 {
   padding: 18px;
 }
 
-/* Lists */
+/* Callout */
+.callout {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 4px solid var(--accent);
+  background: var(--panel);
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.callout-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Links list */
 .link-list {
   list-style: disc;
   padding-left: 20px;
@@ -176,7 +189,7 @@ h3 {
 
 .link-list a:hover { color: var(--link-hover); }
 
-/* Useful images section */
+/* Images grid */
 .image-grid {
   display: grid;
   gap: 24px;
@@ -212,24 +225,7 @@ h3 {
   color: var(--muted);
 }
 
-/* Callout */
-.callout {
-  margin-top: 16px;
-  padding: 14px 16px;
-  border-left: 4px solid var(--accent);
-  background: var(--panel);
-  border-radius: 10px;
-  color: var(--text);
-}
-
-.callout-actions {
-  margin-top: 16px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* ===== Unified buttons (links + tab buttons) ===== */
+/* Buttons + Tab buttons */
 .btn,
 .btn.secondary,
 .btn.emergency,
@@ -255,7 +251,6 @@ h3 {
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-/* Hover */
 .btn:hover,
 .btn.secondary:hover,
 .tab-btn:hover {
@@ -264,19 +259,16 @@ h3 {
   color: var(--link-hover);
 }
 
-/* Active tab (selected but same style) */
 .tab-btn.active {
   background: var(--panel);
   border-color: var(--link);
   color: var(--link);
 }
 
-/* Emergency: same shape, colour only */
 .btn.emergency {
   background: var(--danger);
   border-color: var(--danger);
   color: #ffffff;
-  animation: none;
 }
 
 .btn.emergency:hover {
@@ -293,7 +285,7 @@ footer .btn,
   min-height: 44px;
 }
 
-/* Help accordion */
+/* Accordions */
 .accordion {
   margin-top: 12px;
   border-top: 1px solid var(--border);
@@ -328,13 +320,7 @@ footer .btn,
 
 .contact-actions .btn { white-space: normal; }
 
-/* Disabled placeholders */
-a.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-/* Dropdown styling */
+/* Dropdown */
 .select {
   width: 100%;
   max-width: 420px;
@@ -370,6 +356,57 @@ a.disabled {
   padding: 12px;
 }
 
+/* Tabs */
+.tabs-wrap {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  max-width: 100%;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.tab-panel {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+.tab-frame {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+  height: 75vh;
+  min-height: 700px;
+}
+
+.tab-group-section {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.tab-group-heading {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+}
+
 /* Footer */
 footer {
   margin-top: 50px;
@@ -378,7 +415,7 @@ footer {
   color: var(--muted);
 }
 
-/* Mobile header */
+/* Mobile */
 @media (max-width: 800px) {
   .container { padding: 12px; }
 
@@ -396,6 +433,11 @@ footer {
   section { scroll-margin-top: 150px; }
 
   .nav .btn.emergency { width: 100%; }
+
+  .tab-frame {
+    height: 78vh;
+    min-height: 520px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -403,73 +445,4 @@ footer {
     width: 100%;
     justify-content: center;
   }
-}
-
-/* Tabs layout (kept, but no longer forces a different button look) */
-.tabs-wrap {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-}
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-.tab-panel {
-  margin-top: 14px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  background: #ffffff;
-  width: 100%;
-}
-
-
-.tab-frame {
-  width: 100%;
-  height: 80vh;
-  min-height: 700px;
-  border: 0;
-  display: block;
-}
-
-.tab-group-section {
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-}
-
-.tab-group-heading {
-  margin: 0 0 10px;
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--text);
-}
-@media (max-width: 800px) {
-  .tab-frame { height: 78vh; }
-}
-
-/* === Tabs: force full-width panel/iframe === */
-.tabs-wrap,
-.tabs-wrap .tabs,
-.tabs-wrap .tab-panel {
-  width: 100%;
-  max-width: 100%;
-}
-
-.tabs-wrap .tab-panel {
-  display: block;
-  margin-top: 14px;
-}
-
-.tabs-wrap .tab-frame {
-  display: block;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 75vh;
-  border: 0;
 }
