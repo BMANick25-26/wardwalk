@@ -172,6 +172,12 @@ section + section {
   border-color: var(--link);
 }
 
+#help .contact-actions a.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* Callout */
 .callout {
   margin-top: 16px;
