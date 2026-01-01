@@ -434,5 +434,23 @@
       });
     })();
   </script>
+  <script>
+  document.querySelectorAll('#help .contact-actions a').forEach(btn => {
+    const href = btn.getAttribute("href") || "";
+
+    const isPlaceholder =
+      href.includes("wa.me/00000000000") ||
+      href.includes("mailto:***@***") ||
+      href.includes("tel:+00000000000");
+
+    if (isPlaceholder) {
+      btn.classList.add("disabled");
+      btn.textContent = "Not available currently";
+      btn.removeAttribute("href");
+      btn.removeAttribute("target"); // optional, avoids odd behaviour
+      btn.setAttribute("aria-disabled", "true");
+    }
+  });
+</script>
 </body>
 </html>
