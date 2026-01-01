@@ -5,7 +5,7 @@
   <title>Ward Walk Guide for BMA Reps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A practical ward walk guide for BMA reps: prep, during, post, Pizza & Pay, useful links, and WhatsApp support.">
-  <link rel="stylesheet" href="style.css?v=22">
+  <link rel="stylesheet" href="style.css?v=23">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0b0d12">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -182,7 +182,12 @@ function scrollPanelIntoView() {
 
     // Click + keyboard nav
     buttons.forEach(btn => {
-      btn.addEventListener('click', () => setActive(btn, true));
+      btn.addEventListener('click', () => {
+  setActive(btn, true);
+  // Let layout update before scrolling
+  setTimeout(scrollPanelIntoView, 50);
+});
+
 
       btn.addEventListener('keydown', (e) => {
         const i = buttons.indexOf(btn);
