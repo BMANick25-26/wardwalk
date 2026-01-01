@@ -1,7 +1,7 @@
 /* sw.js — Ward Walk site
    Bump SW_VERSION on every deploy to force updates.
 */
-const SW_VERSION = "v21"; // <-- change this each time you deploy (v13, v14, etc.)
+const SW_VERSION = "v23"; // <-- change this each time you deploy (v13, v14, etc.)
 const CACHE_NAME = `wardwalk-${SW_VERSION}`;
 
 // Core assets you want available offline (optional).
